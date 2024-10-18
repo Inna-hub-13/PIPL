@@ -21,7 +21,7 @@ char* ends_with(char* str, char* suffix, int size_suffix) {
 
     char* address_check = NULL;
     // i -> iterates through str
-    // j_check -> iterates through str_check
+    // j_suffix -> iterates through str_check
     // count_characters -> keeps the length of last found sequence of characters in str
     int i = 0, j_suffix, count_characters = 1;
 
