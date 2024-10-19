@@ -103,7 +103,7 @@ void make_first_second_initial(char* name) {
         if(*(name + i) == ' ')
             k++;
             
-        // checks for hypothetical double
+        // checks for hypothetical double name
         else if(*(name + i) == '-'){
 
             *(name + j) = *(name + i);
