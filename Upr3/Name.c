@@ -124,6 +124,7 @@ void make_first_second_initial(char* name) {
             k++;
         }
 
+        // second whitespace found
         else if(k == 3) {
 
             *(name + j) = *(name + i);
