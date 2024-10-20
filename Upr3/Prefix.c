@@ -32,7 +32,7 @@ char* starts_with(char* str, char* prefix, int size_prefix) {
 
         // count_characters >= size_prefix
         // prefix must be shorter than the last found sequence of characters
-        // <ch> can't contain cherry
+        // <ch> can't contain <cherry>
         if(*str == ' ' && count_characters >= size_prefix) {
 
             j_prefix = 0;
@@ -51,7 +51,7 @@ char* starts_with(char* str, char* prefix, int size_prefix) {
             count_characters = 0;
         }
         else
-            count_characters ++;
+            count_characters++;
 
         str++;
     }
