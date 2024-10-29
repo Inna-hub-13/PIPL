@@ -66,7 +66,7 @@ char* get_last(char* str) {
     if(!last)
         return NULL;
     
-    // return str to point to the firt character of the last word
+    // return str to point to the first character of the last word
     str -= count;
     for(i = 0; i < count; i++)
         *(last + i) = *(str + i);
