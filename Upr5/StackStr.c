@@ -49,7 +49,7 @@ int get_size(char* str) {
 }
 
 // helper function that creates a dynamically allocated array of characters
-// copiest str to it and returns the address to the first character of the sequence
+// copies str to it and returns the address to the first character of the sequence
 char* copy_str(char* str) {
 
     int size = get_size(str);
