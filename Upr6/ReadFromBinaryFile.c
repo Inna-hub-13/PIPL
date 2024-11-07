@@ -6,6 +6,8 @@
 #include <stdlib.h>
 
 // 5.11 2024 - last element read twice!!! Needs to be fixed
+// 7.11 2024 - problem fixed
+// Caused by feof function in while loop, replaced by -> fread(&car, sizeof(struct car), 1, pF) > 0
 
 struct car{
 
@@ -40,8 +42,9 @@ int main() {
         int counted = output(pF, &top);
         printf("Count elements read: %d\n", counted);
         print_stack(top);
-        fclose(pF);
     }
+    
+    fclose(pF);
 
     return 0;
 }
@@ -82,9 +85,8 @@ int output(FILE* pF, struct stack** top) {
     struct car car;
     int k = 0;
 
-    while(!feof(pF)) {
+    while(fread(&car, sizeof(struct car), 1, pF) > 0) {
 
-        fread(&car, sizeof(struct car), 1, pF);
         push(top, &car);
         k++;
     }
