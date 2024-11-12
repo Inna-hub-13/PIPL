@@ -1,0 +1,5 @@
+1	102	banana
+2	103	carrot
+3	101	cucumber
+4	102	blue ivy
+5	102	kale
