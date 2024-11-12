@@ -14,7 +14,7 @@ int find_items(char*, int);
 int main() {
 
     printf("input() returned: %d\n", input("items.txt"));
-    printf("find_item() returned: %d\n", find_items("items.txt", 102));
+    printf("find_items() returned: %d\n", find_items("items.txt", 102));
     return 0;
 }
 
@@ -69,7 +69,7 @@ int find_items(char* filename, int num_r) {
     int num_room, num_item, end;
     char name_item[N];
     
-    // fscanf reads from a file pointed by the FILE pointer
+    // fscanf reads from a file, pointed by the FILE pointer
     // it returns zero or EOF, if unsuccessful 
     // otherwise, it returns the number of items successfully assigned
     while(fscanf(pf, " %d\t%d\t%[^\n]s", &num_item, &num_room, name_item) > 0) {
