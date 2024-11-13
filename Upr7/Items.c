@@ -66,7 +66,7 @@ int find_items(char* filename, int num_r) {
     if(!pf)
         return -1;
     
-    int num_room, num_item, end;
+    int num_room, num_item;
     char name_item[N];
     
     // fscanf reads from a file, pointed by the FILE pointer
