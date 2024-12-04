@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 04.12 2024 - not complete
+
 struct words{
 
     char w1[15];
