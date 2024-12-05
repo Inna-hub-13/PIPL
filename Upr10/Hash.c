@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// 04.12 2024 - not complete
-
 struct words{
 
     char w1[15];
@@ -17,6 +15,7 @@ int hash_func(char*);
 int search_pos(struct words*, int, char*);
 int add(struct words*, int, struct words*);
 char* translate(struct words*, int, char*);
+int delete(struct words*, int, char*);
 
 int main() {
 
@@ -33,7 +32,7 @@ int main() {
         scanf(" %s", temp.w1);
         printf("Enter that word in English: ");
         scanf(" %s", temp.w2);
-        printf("add returned: %d\n", add(table, 128, &temp));
+        printf("add() returned: %d\n", add(table, 128, &temp));
         printf("Do you want to enter other words Y/N: ");
         scanf(" %c", &ans);
     }while(ans == 'Y');
@@ -41,11 +40,28 @@ int main() {
     for(i = 0; i < 128; i++)
         if((table + i) -> w1[0] != 0)
             printf("%s %s\n", (table + i) -> w1, (table + i) -> w2);
-    
+
+    char *p;
     char buff[15];
-    printf("Enter word to translate: ");
+    ans = 'Y';
+    do{
+        
+        printf("Enter word to translate: ");
+        scanf(" %s", &buff);
+        p = translate(table, 128, buff);
+        printf("%s -> %s\n", buff, p);
+        printf("Do you want to continue Y/N: ");
+        scanf(" %c", &ans);
+    }while(ans == 'Y');
+
+    printf("Enter word to delete: ");
     scanf(" %s", &buff);
-    printf("%s -> %s \n", buff, translate(table, 128, buff));
+    printf("delete() returned: %d\n", delete(table, 128, buff));
+    
+    for(i = 0; i < 128; i++)
+        if((table + i) -> w1[0] != 0)
+            printf("%s %s\n", (table + i) -> w1, (table + i) -> w2);
+    
     return 0;
 }
 
@@ -97,12 +113,12 @@ int search_pos(struct words* table, int size, char* word) {
     return -1;
 }
 
-int add(struct words* table, int size, struct words* buffer) {
+int add(struct words* table, int size, struct words* words) {
 
-    int pos = search_pos(table, size, buffer->w1);
+    int pos = search_pos(table, size, words->w1);
     if(pos >= size){
 
-        *(table + pos - size) = *buffer;
+        *(table + pos - size) = *words;
         return 0;
     }
     
@@ -111,23 +127,24 @@ int add(struct words* table, int size, struct words* buffer) {
 
 char* translate(struct words* table, int size, char* word) {
 
-    int pos = hash_func(word);
-    int index = pos;
-
-    while(index < size){
-
-        if(strcmp((table + index)->w1, word) == 0)
-            return (table + index) -> w2;
-            index++;
-    }
-    
-    index = 0;
-    while(index < pos){
-
-        if(strcmp((table + index)->w1, word) == 0)
-            return (table + index) -> w2;
-        index++;
-    }
+    int pos = search_pos(table, size, word);
+    // The word is in the table
+    if(pos <= size && pos >= 0)
+        return (table + pos) -> w2;
         
     return NULL;
+}
+
+int delete(struct words* table, int size, char* word) {
+
+    int pos = search_pos(table, size, word);
+    // The word is in the table, delete it
+    if(pos <= size && pos >= 0){
+
+        (table + pos) -> w1[0] = 0;
+        (table + pos) -> w2[0] = 0;
+        return 0;
+    }
+
+    return -1;
 }
