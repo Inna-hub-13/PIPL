@@ -47,7 +47,7 @@ int main() {
     do{
         
         printf("Enter word to translate: ");
-        scanf(" %s", &buff);
+        scanf(" %s", buff);
         p = translate(table, 128, buff);
         printf("%s -> %s\n", buff, p);
         printf("Do you want to continue Y/N: ");
@@ -55,7 +55,7 @@ int main() {
     }while(ans == 'Y');
 
     printf("Enter word to delete: ");
-    scanf(" %s", &buff);
+    scanf(" %s", buff);
     printf("delete() returned: %d\n", delete(table, 128, buff));
     
     for(i = 0; i < 128; i++)
