@@ -22,10 +22,10 @@ int main() {
     char ans = 'Y';
     int count = 0;
 
-    //FILE* pf;
+    FILE* pf;
     FILE* InStream;
 
-    /*pf = fopen("books.bin", "wb");
+    pf = fopen("books.bin", "wb");
     if(!pf)
         return -1;
 
@@ -41,13 +41,13 @@ int main() {
         fwrite(&temp, sizeof(struct Book), 1, pf);
         printf("Do you want to add more books? Y/N: ");
         scanf(" %c", &ans);
-    }while(ans == 'Y');*/
+    }while(ans == 'Y');
 
     InStream = fopen("books.bin", "rb");
     count = BookCounter(InStream, "Debelqnov\0");
 
     printf("count = %d\n", count);
-    //fclose(pf);
+    fclose(pf);
     fclose(InStream);
     return 0;
 }
