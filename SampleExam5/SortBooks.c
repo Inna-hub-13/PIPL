@@ -16,7 +16,6 @@ struct Book{
 };
 
 int cmp_year(byte*, byte*);
-int sum_el(byte*, byte*);
 void BubbleSort(byte*, int, int, int(*)());
 
 int main() {
@@ -55,15 +54,7 @@ int main() {
         printf("\nISBN: %s\nBookName: %s\nYear: %d\nPublisher: %s\n", (arr + j),
         (arr + j)->BookName, (arr + j)->Year, (arr + j)->Publisher);
 
-    int sum = sum_el((byte*)(arr), (byte*)(arr + 1));
-    printf("sum = %d", sum);
-
     return 0;
-}
-
-int sum_el(byte* el1, byte* el2) {
-
-    return *(int*)(el1 + 34) + *(int*)(el2 + 34);
 }
 
 int cmp_year(byte* el1, byte*  el2) {
