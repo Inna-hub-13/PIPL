@@ -11,6 +11,8 @@ int main() {
 
     FILE* pf;
     pf = fopen("hex_numbers.txt", "w");
+    if(!pf)
+        return 1;
     write_to_file(pf, 130);
 
     fclose(pf);
